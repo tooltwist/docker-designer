@@ -1,10 +1,10 @@
 environment:
-   language: ruby
-   language_version: 1.9.3
 
+  image: centos
 
-
+  language: ruby
 
 build:
+
    run: echo hello world
 
