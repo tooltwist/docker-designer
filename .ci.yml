@@ -2,6 +2,8 @@ environment:
 
   image: centos
 
+  language: java
+
 build:
 
    run: echo hello world
