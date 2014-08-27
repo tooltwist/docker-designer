@@ -1,0 +1,16 @@
+environment:
+
+
+   image: ubuntu
+
+
+   language: ruby
+
+
+
+
+build:
+
+
+    run: echo hello world
+
