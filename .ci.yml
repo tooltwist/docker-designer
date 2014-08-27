@@ -1,15 +1,10 @@
 environment:
-
-
-    language: ruby
-
-    language_version: 1.9.3
+   language: ruby
+   language_version: 1.9.3
 
 
 
 
 build:
-
-
-    run: echo hello world
+   run: echo hello world
 
