@@ -1,6 +1,6 @@
 environment:
 
-  image: centos
+  image: dockerfile/java
 
   language: java
 
