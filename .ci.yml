@@ -1,10 +1,9 @@
 environment:
 
 
-   image: ubuntu
+	language: ruby
 
-
-   language: ruby
+	language_version: 1.9.3
 
 
 
@@ -12,5 +11,5 @@ environment:
 build:
 
 
-    run: echo hello world
+	run: echo hello world
 
