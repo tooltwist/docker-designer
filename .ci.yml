@@ -2,8 +2,6 @@ environment:
 
   image: centos
 
-  language: ruby
-
 build:
 
    run: echo hello world

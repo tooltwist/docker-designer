@@ -42,12 +42,14 @@ dependencies {
 
 	compile 'org.gradle.api.plugins:gradle-tomcat-plugin:0.9.8'
 
+/*
 	compile 'org.apache.tomcat.embed:tomcat-embed-core:7.0.42'
 	compile 'org.apache.tomcat.embed:tomcat-embed-logging-juli:7.0.42'
 	compile 'org.apache.tomcat.embed:tomcat-embed-jasper:7.0.42'
-
+	exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
 
 	compile 'org.mortbay.jetty:servlet-api:3.0.+'
+*/
 }
 
 /*
