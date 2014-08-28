@@ -1,10 +1,10 @@
 environment:
 
-  image: dockerfile/java
+  image: tooltwist/blank
 
   language: java
 
 build:
 
-   run: echo hello world
+   run: echo hello world 2
 

@@ -2,6 +2,7 @@ FROM dockerfile/nodejs
 MAINTAINER Philip Callender <philip.callender@tooltwist.com>
 
 # install some packages
+USER root
 RUN apt-get update && apt-get install -y openssh-server
 #RUN apt-get install -q -y openjdk-7-jre-headless openjdk-7-jdk
 #RUN apt-get install -q -y openjdk-7-jre-headless openjdk-7-jdk
@@ -53,6 +54,7 @@ ADD start.sh /home/tooltwist/
 RUN chmod +x /home/tooltwist/start.sh
 #RUN tooltwist init
 #CMD tooltwist
+USER tooltwist
 CMD /home/tooltwist/start.sh
 EXPOSE      8080
 EXPOSE      5000
