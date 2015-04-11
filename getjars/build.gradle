@@ -1,0 +1,81 @@
+/*
+ *	Run the InstallerUtil command inside ttc_t.jar
+ */
+apply plugin: 'java'
+apply plugin: 'artifactory'
+apply plugin: 'maven' // so a POM file can be uploaded to repo
+
+// Include jars for the artifactory plugin
+buildscript {
+    repositories {
+        maven { url 'http://jcenter.bintray.com' }
+    }
+    dependencies {
+        classpath(group: 'org.jfrog.buildinfo', name: 'build-info-extractor-gradle', version: '2.0.9')
+    }
+}
+
+repositories {
+	maven {
+		url "http://repo.tooltwist.com/artifactory/tooltwist-all-in-one"
+		credentials {
+			username = ""
+			password = ""
+		}
+	}
+}
+
+dependencies {
+	//compile group: 'com.tooltwist', name: 'ttWbd', version: '8.5.0-SNAPSHOT', transitive: true, changing: true
+        compile group: 'com.tooltwist', name: 'tooltwist', version: '8.5.0-SNAPSHOT', transitive: true, changing: true
+        compile 'com.tooltwist:tooltwist:8.5.0-SNAPSHOT:tooltwist-config@zip'
+        compile 'com.tooltwist:tooltwist:8.5.0-SNAPSHOT:tooltwist-widgets@zip'
+        compile 'com.tooltwist:tooltwist:8.5.0-SNAPSHOT:tooltwist-webcontent@zip'
+        //compile 'com.tooltwist:tooltwist:8.5.0-SNAPSHOT:sources@jar'
+
+        compile group: 'com.tooltwist', name: 'ttWbd', version: '8.5.0-SNAPSHOT', transitive: true, changing: true
+        compile 'com.tooltwist:ttWbd:8.5.0-SNAPSHOT:tooltwist-config@zip'
+        compile 'com.tooltwist:ttWbd:8.5.0-SNAPSHOT:tooltwist-widgets@zip'
+        compile 'com.tooltwist:ttWbd:8.5.0-SNAPSHOT:tooltwist-webcontent@zip'
+        //compile 'com.tooltwist:ttWbd:8.5.0-SNAPSHOT:sources@jar'
+
+        compile group: 'com.tooltwist', name: 'ttStd', version: '8.5.0-SNAPSHOT', transitive: true, changing: true
+        compile 'com.tooltwist:ttStd:8.5.0-SNAPSHOT:tooltwist-config@zip'
+        compile 'com.tooltwist:ttStd:8.5.0-SNAPSHOT:tooltwist-widgets@zip'
+        compile 'com.tooltwist:ttStd:8.5.0-SNAPSHOT:tooltwist-webcontent@zip'
+        //compile 'com.tooltwist:ttStd:8.5.0-SNAPSHOT:sources@jar'
+
+
+        // Provide a security plugin
+        compile group: 'com.tooltwist', name: 'ttsec-standaloneDesigner', version: '8.5.0-SNAPSHOT', transitive: true
+        compile "com.tooltwist:ttsec-standaloneDesigner:8.5.0-SNAPSHOT:tooltwist-config@zip"
+        compile "com.tooltwist:ttsec-standaloneDesigner:8.5.0-SNAPSHOT:tooltwist-widgets@zip"
+        compile "com.tooltwist:ttsec-standaloneDesigner:8.5.0-SNAPSHOT:tooltwist-webcontent@zip"
+
+		compile 'org.gradle.api.plugins:gradle-tomcat-plugin:0.9.8'
+		
+		compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '7.0.42'
+		compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-logging-juli', version: '7.0.42'
+		compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '7.0.42'
+		compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '7.0.42'
+		compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-logging-juli', version: '7.0.42'
+		compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '7.0.42'
+
+/*
+		exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
+
+		compile 'org.mortbay.jetty:servlet-api:3.0.+'
+*/
+}
+
+/*
+*/
+task(runSimple, dependsOn: 'classes', type: JavaExec) {
+	main = 'Dummy'
+	classpath = sourceSets.main.runtimeClasspath
+	args '/private/tmp/aaa/image'
+	systemProperty 'TOOLTWIST_HOME', '/private/tmp/aaa/.tooltwist/site-conf'
+	systemProperty 'LAUNCHPAD_DIR', '/private/tmp/aaa'
+}
+
+defaultTasks 'runSimple'

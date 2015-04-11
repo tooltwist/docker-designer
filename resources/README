@@ -1,0 +1,5 @@
+This directory contains files used to set up a ToolTwist server.
+
+authorized_keys			-> ~tooltwist/.ssh
+start_tooltwist.sh		-> /etc/my_init.d
+
