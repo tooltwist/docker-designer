@@ -20,4 +20,11 @@ if [ ! -r tooltwist.js ] ; then
 fi
 
 # Now run the Designer
-(tooltwist -i designer 2>&1 | tee /logs/tooltwist-cli.output) &
+(
+	# Run the Designer
+	tooltwist -i designer 2>&1 | tee /logs/tooltwist.out;
+
+	# Shutdown by killing the init process
+	INIT_PID=1
+	kill -TERM ${INIT_PID}
+) &

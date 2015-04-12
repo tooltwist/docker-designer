@@ -11,6 +11,7 @@ ENV HOME /root
 USER root
 RUN apt-get update
 RUN apt-get install -q -y openjdk-7-jdk
+# imagemagick is probably not needed any more
 RUN apt-get install -q -y imagemagick
 RUN apt-get install -q -y nodejs npm nodejs-legacy
 RUN apt-get install -q -y build-essential

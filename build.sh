@@ -20,6 +20,7 @@ if [ ! -r ${keyfile} ] ; then
 	echo ""
 	exit 1;
 fi
+cp ${keyfile} my_key.pub
 
 
 
