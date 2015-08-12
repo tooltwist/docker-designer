@@ -43,10 +43,14 @@ USE_VOLUMES=Y
 if [ ${USE_VOLUMES} == "Y" ] ; then
 	USERDIR=${VOLUMES_DIR}/user-${username}
 	LOGSDIR=${VOLUMES_DIR}/logs-${username}
-	mkdir -p ${USERDIR} ${LOGSDIR}
 
 	EXTRA="${EXTRA} -v ${USERDIR}:/tooltwist -v ${LOGSDIR}:/logs"
 fi
+
+# Set up SSH keys
+SSHDIR=${VOLUMES_DIR}/ssh-${username}
+mkdir -p ${SSHDIR}
+[ -e ${SSHDIR}/id_rsa ] && EXTRA="${EXTRA} -v ${SSHDIR}/id_rsa:/root/.ssh/id_rsa"
 
 # Start the container
 echo "$" docker run --name ${container} -p :22 -p :5000 ${EXTRA} -d ${IMAGE_NAME}

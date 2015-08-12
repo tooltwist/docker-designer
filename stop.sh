@@ -15,7 +15,7 @@ username=$1
 container=designer-${username}
 
 #
-#	Remove any old or running container
+#	Stop running container
 #
 echo ''
 echo '** Stopping container...'
